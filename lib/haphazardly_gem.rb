@@ -6,10 +6,10 @@ module HaphazardlyGem
   require_relative "haphazardly_gem/lotto"
   require_relative "haphazardly_gem/playing_card"
 
-  extend Coin
-  extend Dice
-  extend Lotto
-  extend PlayingCard
+  # extend Coin
+  # extend Dice
+  # extend Lotto
+  # extend PlayingCard
 
   class Error < StandardError; end
 
