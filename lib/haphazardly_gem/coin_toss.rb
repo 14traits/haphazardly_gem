@@ -1,15 +1,12 @@
-# frozen_string_literal: truew
-module Randomizer
+# frozen_string_literal: true
+
+module Haphazardly
   module Coin
     extend self
 
     def flip
-      coin = rand(1..100)
-      if coin.even? == true
-        return puts "Heads"
-      else
-        return puts "Tails"
-      end
+      coin = ["heads", "tails"]
+      coin.sample
     end
   end
 end

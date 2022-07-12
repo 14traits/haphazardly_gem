@@ -1,50 +1,20 @@
 # frozen_string_literal: true
-module Randomizer
+
+module Haphazardly
   module PlayingCard
     extend self
 
-    class Card
-      include Comparable
-      attr_reader :order, :suit
-
-      def initialize(order, suit)
-        @order = order
-        @suit = suit
-      end
-
-      def to_s
-        case (@order)
-        when 11
-          "Jack of " << @suit.to_s
-        when 12
-          "Queen of " << @suit.to_s
-        when 13
-          "King of " << @suit.to_s
-        when 14
-          "Ace of " << @suit.to_s
-        else
-          @order.to_s << " of " << @suit.to_s
+    def self.draw
+      cards = []
+      suits = ["Clubs", "Diamonds", "Hearts", "Spades"]
+      values = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"]
+      suits.each do |suit|
+        values.each do |value|
+          cards << value + " of " + suit
         end
       end
-    end
-
-    class Deck
-      attr_reader :deck
-
-      def initialize
-        @deck =
-          %i[diamonds spades hearts clubs].map do |suit|
-            (2..14).map { |order| Card.new(order, suit) }
-          end
-            .flatten
-            .shuffle
-      end
-
-      2.times { @deck << Card.new("*", "Joker") }
-    end
-
-    def flip
-      @deck.shuffle.shift
+      2.times { cards << ["*", "Joker"] }
+      cards.sample
     end
   end
 end

@@ -1,14 +1,16 @@
 # frozen_string_literal: true
-module Randomizer
+
+module Haphazardly
   module Lotto
     extend self
 
     def pick
       output = Array.new
-      6.times do
-        output << rand(1..69)
+      while output.size >= 6
+        number = rand(1..69)
+        output.push(number) unless output.include? (number)
       end
-      print output
+      return output
     end
   end
 end

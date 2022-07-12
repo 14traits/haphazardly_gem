@@ -16,7 +16,15 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+require 'haphazardly_gem'
+
+HaphazardlyGem::Coin.flip           # flips a coin returns heads or tails
+HaphazardlyGem::Dice.roll(x)        #x is the number of dice you want rolled
+HaphazardlyGem::Lotto.pick          # will return a 6 draw lotto ticket
+HaphazardlyGem::PlayingCard.draw    # will return a random card
+
+```
 
 ## Development
 
@@ -26,7 +34,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/haphazardly_gem. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/haphazardly_gem/blob/master/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/14traits/haphazardly_gem. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/14traits/haphazardly_gem/blob/master/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -34,4 +42,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the HaphazardlyGem project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/haphazardly_gem/blob/master/CODE_OF_CONDUCT.md).
+Everyone interacting in the HaphazardlyGem project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/14traits/haphazardly_gem/blob/master/CODE_OF_CONDUCT.md).
