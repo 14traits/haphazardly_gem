@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-module Haphazardly
-  module PlayingCard
-    extend self
-
+module HaphazardlyGem
+  class PlayingCard
     def self.draw
       cards = []
       suits = ["Clubs", "Diamonds", "Hearts", "Spades"]

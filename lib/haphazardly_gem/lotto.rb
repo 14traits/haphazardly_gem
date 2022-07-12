@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-module Haphazardly
-  module Lotto
-    extend self
-
-    def pick
+module HaphazardlyGem
+  class Lotto
+    def self.pick
       output = Array.new
       while output.size >= 6
         number = rand(1..69)

@@ -13,8 +13,8 @@ module HaphazardlyGem
 
   class Error < StandardError; end
 
-  autoload :Coin, "haphazardly_gem/coin_toss"
-  autoload :Dice, "haphazardly_gem/dice"
-  autoload :Lotto, "haphazardly_gem/lotto"
-  autoload :PlayingCard, "haphazardly_gem/playing_card"
+  # autoload :Coin, "haphazardly_gem/coin_toss"
+  # autoload :Dice, "haphazardly_gem/dice"
+  # autoload :Lotto, "haphazardly_gem/lotto"
+  # autoload :PlayingCard, "haphazardly_gem/playing_card"
 end
