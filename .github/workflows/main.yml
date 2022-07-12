@@ -1,4 +1,4 @@
-name: Ruby
+name: Ruby Gem
 
 on:
   push:
@@ -10,32 +10,34 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Ruby ${{ matrix.ruby }}
+    name: Build & Publish
     strategy:
       matrix:
         ruby:
           - '3.1.2'
+    permissions:
+      packages: write
+      contents: read
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ matrix.ruby }}
-        bundler-cache: true
-    - name: Run the default task
-      run: bundle install
-    # Publish
-    - name: publish gem
-      run: |
-        mkdir -p $HOME/.gem
-        touch $HOME/.gem/credentials
-        chmod 0600 $HOME/.gem/credentials
-        printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-        gem build *.gemspec
-        gem push *.gem
-      env:
+      - uses: actions/checkout@v3
+      - name: Set up Ruby 3.1.2
+        uses: ruby/setup-ruby@477b21f02be01bcb8030d50f37cfec92bfa615b6
+        with:
+          ruby-version: 3.1.2
+      - run: bundle install
+
+      # Publish
+      - name: Publish to RubyGems
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+          gem build *.gemspec
+          gem push *.gem
+        env:
         # Make sure to update the secret name
         # if yours isn't named RUBYGEMS_AUTH_TOKEN
-        GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
-      if: ${{ steps.release.outputs.release_created }}
+          GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
+        if: ${{ steps.release.outputs.release_created }}
