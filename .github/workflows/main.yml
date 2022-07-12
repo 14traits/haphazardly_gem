@@ -1,8 +1,8 @@
 name: Ruby Gem
 
 on:
-  create:
-    ref_type: tag
+  push:
+    branches: [ main ]
 
 jobs:
   build:
